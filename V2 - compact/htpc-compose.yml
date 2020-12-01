@@ -1,0 +1,98 @@
+version: "3"
+services:
+  plex:
+    image: linuxserver/plex
+    container_name: plex
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - VERSION=docker
+    volumes:
+      - /run/desktop/mnt/host/z/config/plex:/config
+      - /run/desktop/mnt/host/d/Films:/films
+      - /run/desktop/mnt/host/e/Series:/series
+      - /run/desktop/mnt/host/f/Films2:/films2
+      - /run/desktop/mnt/host/f/Series2:/series2
+      - /run/desktop/mnt/host/g:/Autres
+    ports:
+      - 32400:32400/tcp
+      - 3005:3005/tcp
+      - 8324:8324/tcp
+      - 32469:32469/tcp
+      - 1900:1900/udp
+      - 32410:32410/udp
+      - 32412:32412/udp
+      - 32413:32413/udp
+      - 32414:32414/udp
+    restart: unless-stopped
+    
+  ubooquity:
+    image: linuxserver/ubooquity
+    container_name: ubooquity
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /run/desktop/mnt/host/z/config/ubooquity:/config
+      - /run/desktop/mnt/host/f/eBook:/books
+      - /run/desktop/mnt/host/f/Comics:/comics
+    ports:
+      - 2202:2202
+      - 2203:2203
+    restart: unless-stopped
+    
+  sonarr:
+    image: linuxserver/sonarr
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - UMASK_SET=022 #optional
+    volumes:
+      - /run/desktop/mnt/host/z/config/sonarr:/config
+      - /run/desktop/mnt/host/g/Animes:/animes
+      - /run/desktop/mnt/host/e/Series:/Series
+      - /run/desktop/mnt/host/f/Series2:/Series2
+      - /run/desktop/mnt/host/g/Documentaires:/documentaires
+      - /run/desktop/mnt/host/g/Mini-series:/miniseries
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+    
+  jackett:
+    image: linuxserver/jackett
+    container_name: jackett
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - AUTO_UPDATE=true #optional
+      - RUN_OPTS=run options here #optional
+    volumes:
+      - /run/desktop/mnt/host/z/config/jackett:/config
+    ports:
+      - 9117:9117
+    restart: unless-stopped
+    
+  transmission:
+    image: linuxserver/transmission
+    container_name: transmission
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - TRANSMISSION_WEB_HOME=/combustion-release/ #optional
+      - USER=admin
+      - PASS=password
+    volumes:
+      - /run/desktop/mnt/host/z/config/transmission:/config
+      - /run/desktop/mnt/host/z/Downloads:/downloads
+      - /run/desktop/mnt/host/z/Downloads:/watch
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    restart: unless-stopped
+    
