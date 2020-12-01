@@ -1,0 +1,27 @@
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/z/config/muximux --opt o=bind muximux
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/z/config/emby --opt o=bind emby
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/z/config/heimdall --opt o=bind heimdall
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/z/config/jackett --opt o=bind jackett
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/z/config/lamp --opt o=bind lamp
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/z/config/laravel --opt o=bind laravel
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/z/config/lidarr --opt o=bind lidarr
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/z/config/mariadb --opt o=bind mariadb
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/z/config/owncloud --opt o=bind owncloud
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/z/config/plex --opt o=bind plex
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/z/config/sonarr --opt o=bind sonarr
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/z/config/transmission --opt o=bind transmission
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/z/config/ubooquity --opt o=bind ubooquity
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/z/config/wordpress --opt o=bind wordpress
+
+
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/d/Films --opt o=bind films
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/f/Films2 --opt o=bind films2
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/e/Series --opt o=bind series
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/h/eBook --opt o=bind books
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/f/Series2 --opt o=bind series2
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/h/Comics --opt o=bind comics
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/Backups/h/Music --opt o=bind music
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/g/Animes --opt o=bind animes
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/g/Documentaires --opt o=bind documentaires
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/g/Mini-series --opt o=bind mini
+docker volume create --driver local --opt type=none --opt device=/run/desktop/mnt/host/z/Downloads --opt o=bind down
