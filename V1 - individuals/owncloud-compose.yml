@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+
+  owncloud:
+    image: owncloud
+    restart: always
+    volumes:
+      - /run/desktop/mnt/host/z/config/owncloud/owncloud:/var/www/html/data/naaga/files 
+    ports:
+      - 8080:80
+      
+  mysql:
+     image: mariadb
+     volumes:
+       - /run/desktop/mnt/host/z/config/owncloud/mariadb:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: onthestep
+
+

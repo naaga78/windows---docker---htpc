@@ -1,0 +1,14 @@
+version: "3"
+services:
+  lamp:
+    image: naaga78/lamp:rev1
+    container_name: lamp
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /run/desktop/mnt/host/c/Apache/:/app
+    ports:
+      - 80:80
+    restart: unless-stopped

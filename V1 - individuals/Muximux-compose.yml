@@ -1,0 +1,17 @@
+version: "3"
+volumes:
+  muximux:
+    external: true
+services:
+  muximux:
+    image: linuxserver/muximux
+    container_name: muximux
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - muximux:/config
+    ports:
+      - 8888:80
+    restart: unless-stopped

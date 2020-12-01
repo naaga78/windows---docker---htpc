@@ -1,0 +1,2 @@
+docker pull naaga78/lamp:rev3
+docker run -p "80:80" -v z:/config/lamp/app:/app -v z:/config/lamp/mysql:/var/lib/mysql naaga78/lamp:rev3

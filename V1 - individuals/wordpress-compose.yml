@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+   db:
+     image: mariadb
+     volumes:
+       - /run/desktop/mnt/host/z/config/wordpress/mariadb:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: password
+       MYSQL_DATABASE: wordpress
+       MYSQL_USER: wordpress
+       MYSQL_PASSWORD: wordpress
+
+   wordpress:
+     image: wordpress:latest
+     volumes:
+       - /run/desktop/mnt/host/z/config/wordpress/wordpress:/var/www/html/
+     ports:
+       - 80
+     restart: always
+     environment:
+       WORDPRESS_DB_HOST: db
+       WORDPRESS_DB_USER: wordpress
+       WORDPRESS_DB_PASSWORD: wordpress

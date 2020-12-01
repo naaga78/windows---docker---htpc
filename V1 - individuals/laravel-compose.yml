@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  mariadb:
+    image: 'docker.io/bitnami/mariadb:10.2-debian-10'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_USER=naaga
+      - MARIADB_DATABASE=laravel
+      - MARIADB_PASSWORD=password
+
+  myapp:
+    tty: true
+    image: docker.io/bitnami/laravel:7-debian-10
+    environment:
+      - DB_HOST=mariadb
+      - DB_USERNAME=naaga
+      - DB_DATABASE=laravel
+      - DB_PASSWORD=password
+    depends_on:
+      - mariadb
+    ports:
+      - 3000:3000
+    volumes:
+      - /run/desktop/mnt/host/z/config/laravel:/app
+    # privileged: true # Privileged mode could be required to run this container under Windows

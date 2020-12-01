@@ -1,0 +1,21 @@
+version: "3"
+services:
+ emby:
+    image: linuxserver/emby
+    container_name: emby
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - UMASK_SET=022 #optional
+    volumes:
+      - /run/desktop/mnt/host/z/config/emby:/config
+      - /run/desktop/mnt/host/d/Films:/films
+      - /run/desktop/mnt/host/e/Series:/series
+      - /run/desktop/mnt/host/f/Films2:/films2
+      - /run/desktop/mnt/host/f/Series2:/series2
+      - /run/desktop/mnt/host/g:/Autres
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+    restart: unless-stopped

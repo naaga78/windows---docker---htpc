@@ -1,0 +1,21 @@
+version: "3"
+services:
+  transmission:
+    image: linuxserver/transmission
+    container_name: transmission
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - TRANSMISSION_WEB_HOME=/combustion-release/ #optional
+      - USER=
+      - PASS=
+    volumes:
+      - /run/desktop/mnt/host/z/config/transmission:/config
+      - /run/desktop/mnt/host/c/Users/paull/Downloads:/downloads
+      - /run/desktop/mnt/host/c/Users/paull/Downloads:/watch
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    restart: unless-stopped

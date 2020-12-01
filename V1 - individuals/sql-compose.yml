@@ -1,0 +1,23 @@
+version: '3.2'
+
+services:
+   db:
+     image: mariadb
+     volumes:
+       - /run/desktop/mnt/host/z/config/sql:/var/lib/mysql
+     restart: always
+     ports:
+       - '3306:3306'
+     environment:
+       MYSQL_ROOT_PASSWORD: password
+  
+   app:
+      depends_on:
+       - db
+      image: phpmyadmin/phpmyadmin
+      container_name: phpmyadmin
+      restart: always
+      ports:
+       - '9090:80'
+      environment:
+        PMA_HOST: db
